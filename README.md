@@ -1,1 +1,1 @@
-# TicTacToe-with-API
+# TicTacToe
