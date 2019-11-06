@@ -9,14 +9,27 @@ public class Main {
         String input = scanner.nextLine();
         char[] ticTac = input.toCharArray();
         String verdict;
-        if (ticTac[0] == 'X' & ticTac[1] == 'X' & ticTac[2] == 'X' ||
-            ticTac[3] == 'X' & ticTac[4] == 'X' & ticTac[5] == 'X' ||
-            ticTac[6] == 'X' & ticTac[7] == 'X' & ticTac[8] == 'X' ||
-            ticTac[0] == 'X' & ticTac[3] == 'X' & ticTac[6] == 'X' ||
-            ticTac[1] == 'X' & ticTac[4] == 'X' & ticTac[7] == 'X' ||
-            ticTac[2] == 'X' & ticTac[5] == 'X' & ticTac[8] == 'X' ||
-            ticTac[0] == 'X' & ticTac[4] == 'X' & ticTac[8] == 'X' ||
-            ticTac[2] == 'X' & ticTac[4] == 'X' & ticTac[6] == 'X'
+        int xCount = 0;
+        int oCount = 0;
+        for (char c : ticTac) {
+            if (c == 'X') {
+                xCount++;
+            } else if (c == 'O'){
+                oCount++;
+            }
+        }
+        if ((ticTac[0] == 'X' & ticTac[3] == 'X' & ticTac[6] == 'X' & ticTac[1] == 'O' & ticTac[4] == 'O' & ticTac[7] == 'O') ||
+                (xCount > (oCount + 1)) ||
+                (oCount > (xCount + 1))) {
+            verdict = "Impossible";
+        } else if (ticTac[0] == 'X' & ticTac[1] == 'X' & ticTac[2] == 'X' ||
+                    ticTac[3] == 'X' & ticTac[4] == 'X' & ticTac[5] == 'X' ||
+                    ticTac[6] == 'X' & ticTac[7] == 'X' & ticTac[8] == 'X' ||
+                    ticTac[0] == 'X' & ticTac[3] == 'X' & ticTac[6] == 'X' ||
+                    ticTac[1] == 'X' & ticTac[4] == 'X' & ticTac[7] == 'X' ||
+                    ticTac[2] == 'X' & ticTac[5] == 'X' & ticTac[8] == 'X' ||
+                    ticTac[0] == 'X' & ticTac[4] == 'X' & ticTac[8] == 'X' ||
+                    ticTac[2] == 'X' & ticTac[4] == 'X' & ticTac[6] == 'X'
         ) {
             verdict = "X wins";
         } else if (ticTac[0] == 'O' & ticTac[1] == 'O' & ticTac[2] == 'O' ||
@@ -27,12 +40,12 @@ public class Main {
                 ticTac[2] == 'O' & ticTac[5] == 'O' & ticTac[8] == 'O' ||
                 ticTac[0] == 'O' & ticTac[4] == 'O' & ticTac[8] == 'O' ||
                 ticTac[2] == 'O' & ticTac[4] == 'O' & ticTac[6] == 'O'
-        ){
+        ) {
             verdict = "O wins";
         } else if (ticTac[0] == '_' || ticTac[1] == '_' || ticTac[2] == '_' ||
                 ticTac[3] == '_' || ticTac[4] == '_' || ticTac[5] == '_' ||
                 ticTac[6] == '_' || ticTac[7] == '_' || ticTac[8] == '_'
-        ){
+        ) {
             verdict = "Game not finished";
         } else {
             verdict = "Draw";
